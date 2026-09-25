@@ -24,21 +24,19 @@ PIX = "#0E7C5A"
 
 # slot -> descrição da foto real que vai no lugar
 PHOTO_BRIEF = {
-    "hero": "Modelo com moletom preto oversized, rua à noite com luz neon",
-    "feat-roupas": "Dupla vestindo streetwear, fundo urbano",
-    "feat-setup": "Setup gamer com luz RGB, teclado e headset",
+    "hero": "Modelo com moletom preto oversized, rua à noite",
+    "feat-colecao": "Dupla vestindo streetwear, fundo urbano",
+    "feat-feminino": "Modelo feminina com look oversized",
     "p-moletom": "Moletom preto em fundo cinza claro",
-    "p-headset": "Headset sem fio em fundo cinza claro",
+    "p-calca": "Calça cargo em fundo cinza claro",
     "p-camiseta": "Camiseta branca em fundo cinza claro",
-    "p-mouse": "Mouse gamer em fundo cinza claro",
-    "p-bone": "Boné preto em fundo cinza claro",
-    "p-teclado": "Teclado mecânico em fundo cinza claro",
-    "setup": "Pessoa jogando no PC, quarto escuro, luz colorida",
+    "p-jaqueta": "Jaqueta corta-vento em fundo cinza claro",
+    "look": "Modelo com look completo: moletom, calça cargo e boné",
     "c-moletons": "Modelo de moletom, corpo inteiro",
     "c-camisetas": "Modelo de camiseta, meio corpo",
-    "c-headsets": "Pessoa usando headset",
-    "c-teclados": "Mãos no teclado mecânico",
-    "m-drops": "Fila de loja ou caixa de produto sendo aberta",
+    "c-calcas": "Modelo de calça cargo, corpo inteiro",
+    "c-jaquetas": "Modelo de jaqueta, rua",
+    "m-drops": "Caixa de produto sendo aberta",
     "m-cupom": "Sacola de compras em mãos",
     "m-frete": "Caixa de entrega na porta",
 }
@@ -182,7 +180,7 @@ def desktop():
     # navegação
     a(logo(48, 80, INK, 0.9))
     x = 520
-    for i, n in enumerate(["Lançamentos", "Roupas", "Periféricos", "Setup", "Outlet"]):
+    for i, n in enumerate(["Lançamentos", "Masculino", "Feminino", "Unissex", "Outlet"]):
         a(t(x, 74, n, 16, INK, 5))
         if i == 0:
             a(rect(x, 92, len(n) * 8.9, 2, INK))
@@ -202,8 +200,8 @@ def desktop():
     # hero
     a(photo("hero", 48, 180, 1344, 760))
     a(t(W / 2, 992, "Drop Nebula", 16, INK, 5, "middle"))
-    a(t(W / 2, 1090, "Vista o jogo", 96, INK, 4, "middle", "d"))
-    a(t(W / 2, 1134, "Moletons pesados e periféricos de precisão. Peças limitadas, só até domingo.", 16, INK, 4, "middle"))
+    a(t(W / 2, 1090, "Vista seu sonho", 96, INK, 4, "middle", "d"))
+    a(t(W / 2, 1134, "Moletons pesados, camisetas de algodão grosso e calças cargo. Peças limitadas, só até domingo.", 16, INK, 4, "middle"))
     p1, w1 = pill(0, 0, "Comprar o drop")
     p2, w2 = pill(0, 0, "Ver lookbook", WHITE, INK, border=INK)
     gx = W / 2 - (w1 + 8 + w2) / 2
@@ -213,8 +211,8 @@ def desktop():
     y = 1300
     a(section_title(y, "Em destaque"))
     for i, (slot, eyebrow, title, cta) in enumerate([
-        ("feat-roupas", "Coleção Nebula", "Streetwear para quem vive online", "Comprar roupas"),
-        ("feat-setup", "Periféricos", "Setup que acompanha seu ritmo", "Comprar periféricos"),
+        ("feat-colecao", "Coleção Nebula", "Streetwear feito para durar", "Comprar coleção"),
+        ("feat-feminino", "Feminino", "Oversized do seu jeito", "Comprar feminino"),
     ]):
         x = 48 + i * 684
         a(photo(slot, x, y + 32, 660, 820, dark_overlay=True))
@@ -228,9 +226,9 @@ def desktop():
     a(section_title(y, "Os mais vendidos", True, "Ver tudo"))
     cards = [
         ("p-moletom", "Mais vendido", ACCENT, "Moletom Nebula Oversized", "Moletom unissex", "3 cores", "R$ 289,90", None, "R$ 275,40", "10x de R$ 28,99"),
-        ("p-headset", "23% off", SALE, "Headset Pulse 7.1 Wireless", "Periférico", "2 cores", "R$ 384,90", "R$ 499,90", "R$ 365,66", "10x de R$ 38,49"),
+        ("p-calca", "23% off", SALE, "Calça Cargo Orbit", "Calça masculina", "2 cores", "R$ 229,90", "R$ 299,90", "R$ 218,41", "10x de R$ 22,99"),
         ("p-camiseta", "Últimas unidades", SALE, "Camiseta Pixel Heavy", "Camiseta unissex", "4 cores", "R$ 139,90", None, "R$ 132,91", "10x de R$ 13,99"),
-        ("p-mouse", "Novo", ACCENT, "Mouse Orbit 26K", "Periférico", "2 cores", "R$ 219,90", None, "R$ 208,91", "10x de R$ 21,99"),
+        ("p-jaqueta", "Novo", ACCENT, "Jaqueta Corta-vento Drift", "Jaqueta unissex", "3 cores", "R$ 349,90", None, "R$ 332,41", "10x de R$ 34,99"),
     ]
     cw = 424
     a(f'<clipPath id="carousel"><rect x="48" y="{y + 20}" width="1392" height="700"/></clipPath><g clip-path="url(#carousel)">')
@@ -238,20 +236,20 @@ def desktop():
         a(product_card(48 + i * (cw + 12), y + 32, cw, *c))
     a("</g>")
 
-    # setup completo (banner largo)
+    # look completo (banner largo)
     y = 2980
-    a(section_title(y, "Kit Nebula Setup"))
-    a(photo("setup", 48, y + 32, 1344, 700))
-    a(t(W / 2, y + 850, "Monte seu kit", 96, INK, 4, "middle", "d"))
-    a(t(W / 2, y + 894, "Moletom, headset e mousepad juntos por R$ 682,30. Você economiza R$ 120,40.", 16, INK, 4, "middle"))
-    p, pw = pill(0, 0, "Montar meu kit")
+    a(section_title(y, "Look Nebula"))
+    a(photo("look", 48, y + 32, 1344, 700))
+    a(t(W / 2, y + 850, "Monte o look", 96, INK, 4, "middle", "d"))
+    a(t(W / 2, y + 894, "Moletom, calça cargo e boné juntos por R$ 543,75. Você economiza R$ 95,95.", 16, INK, 4, "middle"))
+    p, pw = pill(0, 0, "Comprar o look")
     a(f'<g transform="translate({W / 2 - pw / 2} {y + 922})">{p}</g>')
 
     # categorias
     y = 4040
     a(section_title(y, "Compre por categoria", True))
     for i, (slot, lab) in enumerate([("c-moletons", "Moletons"), ("c-camisetas", "Camisetas"),
-                                     ("c-headsets", "Headsets"), ("c-teclados", "Teclados")]):
+                                     ("c-calcas", "Calças"), ("c-jaquetas", "Jaquetas")]):
         x = 48 + i * (330 + 8)
         a(photo(slot, x, y + 32, 330, 440))
         p, _ = pill(0, 0, lab, WHITE, INK, 16, 40, 20)
@@ -332,7 +330,7 @@ def mobile():
     a(t(195, 148, "Seja membro", 11, INK, 5, "middle", extra='text-decoration="underline"'))
     a(photo("hero", 0, 158, 390, 440))
     a(t(24, 632, "Drop Nebula", 14, INK, 5))
-    a(t(24, 690, "Vista o jogo", 56, INK, 4, "", "d"))
+    a(t(24, 690, "Vista seu sonho", 56, INK, 4, "", "d"))
     a(t(24, 720, "Peças limitadas, só até domingo.", 14, INK, 4))
     p, _ = pill(0, 0, "Comprar o drop", INK, WHITE, 14, 40, 20)
     a(f'<g transform="translate(24 740)">{p}</g>')

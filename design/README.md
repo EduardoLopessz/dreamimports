@@ -22,7 +22,7 @@ Abra os SVGs no navegador para ver as animações (faixa rolando, selo girando, 
 
 Tipografia: Manrope (500 a 700). Todos os pares de texto e fundo passam em WCAG AA (mínimo 4,7:1).
 
-## Mockup v2: referência Nike
+## Mockup v2: referência Nike, loja só de roupas
 
 - `mockup-v2-desktop.svg` e `mockup-v2-mobile.svg`, gerados por `generate_mockup_v2.py`
 - Fundo branco, fotos grandes, títulos em Anton (caixa alta condensada) e textos em Geist
