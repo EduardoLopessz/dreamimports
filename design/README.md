@@ -21,3 +21,16 @@ Abra os SVGs no navegador para ver as animações (faixa rolando, selo girando, 
 | Papel (fundo) | `#F6F3FF` |
 
 Tipografia: Manrope (500 a 700). Todos os pares de texto e fundo passam em WCAG AA (mínimo 4,7:1).
+
+## Mockup v2: referência Nike
+
+- `mockup-v2-desktop.svg` e `mockup-v2-mobile.svg`, gerados por `generate_mockup_v2.py`
+- Fundo branco, fotos grandes, títulos em Anton (caixa alta condensada) e textos em Geist
+- Ícones reais: Phosphor Icons (MIT) e Simple Icons (CC0) para as bandeiras de pagamento
+- Fontes: Anton e Geist (SIL Open Font License), embutidas no SVG
+
+### Fotos
+
+Cada espaço de foto está listado em `PHOTO_BRIEF` no gerador. Para colocar a foto real, salve o arquivo como
+`design/photos/<espaço>.jpg` (por exemplo `design/photos/hero.jpg`) e rode o gerador de novo.
+Use só fotos com licença livre para uso comercial (Unsplash ou Pexels) e sem logos de outras marcas.
