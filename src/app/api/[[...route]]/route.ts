@@ -41,6 +41,24 @@ app.get("/debug/unsplash", async (c) => {
   return c.json(out);
 });
 
+// TEMPORÁRIO: confere se o CDN do Pexels entrega cada foto. Remover depois.
+app.get("/debug/pexels", async (c) => {
+  const ids = (c.req.query("ids") ?? "").split(",").filter(Boolean).slice(0, 40);
+  const out = await Promise.all(
+    ids.map(async (id) => {
+      const url = `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=64`;
+      try {
+        const r = await fetch(url);
+        const buf = await r.arrayBuffer();
+        return { id, status: r.status, type: r.headers.get("content-type"), bytes: buf.byteLength };
+      } catch (e) {
+        return { id, error: String(e) };
+      }
+    }),
+  );
+  return c.json(out);
+});
+
 app.use(
   "/trpc/*",
   trpcServer({
