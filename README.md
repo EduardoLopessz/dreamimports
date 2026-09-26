@@ -55,7 +55,7 @@ tests/            testes Playwright
 
 ## Fotos
 
-Todas as fotos são do Unsplash (Licença Unsplash, uso comercial livre), carregadas pelo `next/image` a partir do link de download de cada foto. A lista com os autores fica em `/creditos`. Para trocar uma foto, altere o `unsplashId` em `src/db/data.ts`.
+Todas as fotos são do Pexels (Licença Pexels, uso comercial livre), servidas pelo CDN `images.pexels.com` e otimizadas pelo `next/image`. A lista com os autores fica em `/creditos`. Para trocar uma foto, copie o número do fim da URL da foto no Pexels (por exemplo `pexels.com/photo/nome-da-foto-1816870/`) para o campo `pexelsId` em `src/db/data.ts`.
 
 ## O que é demonstração
 

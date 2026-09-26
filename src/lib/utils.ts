@@ -29,7 +29,7 @@ export function discountPercent(price: number, compareAt?: number) {
   return Math.round((1 - price / compareAt) * 100);
 }
 
-/** Link de download do Unsplash (redireciona para a imagem original). */
-export function unsplash(id: string) {
-  return `https://unsplash.com/photos/${id}/download?force=true&w=2400`;
+/** Foto original no CDN do Pexels; o next/image redimensiona para cada tela. */
+export function pexels(id: string) {
+  return `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg`;
 }

@@ -22,7 +22,7 @@ export function LookBanner() {
         name: p.name,
         subtitle: p.subtitle,
         priceCents: Math.round(p.priceCents * (1 - BUNDLE_DISCOUNT)),
-        imageId: p.images[0].unsplashId,
+        imageId: p.images[0].pexelsId,
         imageAlt: p.images[0].alt,
         size: l.size,
         color: l.color,

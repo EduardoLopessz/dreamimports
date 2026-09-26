@@ -1,9 +1,9 @@
 import Image from "next/image";
 import type { ProductImage } from "@/db/schema";
-import { cn, unsplash } from "@/lib/utils";
+import { cn, pexels } from "@/lib/utils";
 
 type Props = {
-  image: Pick<ProductImage, "unsplashId" | "alt">;
+  image: Pick<ProductImage, "pexelsId" | "alt">;
   sizes: string;
   className?: string;
   imgClassName?: string;
@@ -11,12 +11,12 @@ type Props = {
   quality?: 75 | 85;
 };
 
-/** Foto real do Unsplash, preenchendo o container. O fundo cinza aparece enquanto carrega. */
+/** Foto real do Pexels, preenchendo o container. O fundo cinza aparece enquanto carrega. */
 export function Photo({ image, sizes, className, imgClassName, priority, quality = 75 }: Props) {
   return (
     <div className={cn("relative overflow-hidden bg-surface", className)}>
       <Image
-        src={unsplash(image.unsplashId)}
+        src={pexels(image.pexelsId)}
         alt={image.alt}
         fill
         sizes={sizes}

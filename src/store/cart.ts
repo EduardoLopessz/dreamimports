@@ -55,7 +55,7 @@ export const useCart = create<CartState>()(
       clear: () => set({ items: [] }),
     }),
     {
-      name: "dream-cart-v1",
+      name: "dream-cart-v2",
       storage: createJSONStorage(() => localStorage),
       partialize: (s) => ({ items: s.items }),
       skipHydration: true,

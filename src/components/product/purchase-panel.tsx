@@ -42,7 +42,7 @@ export function PurchasePanel({ product }: Props) {
       name: product.name,
       subtitle: product.subtitle,
       priceCents: product.priceCents,
-      imageId: product.image.unsplashId,
+      imageId: product.image.pexelsId,
       imageAlt: product.image.alt,
       size,
       color,

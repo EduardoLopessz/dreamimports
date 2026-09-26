@@ -39,7 +39,8 @@ export const reviews = pgTable("reviews", {
   createdAt: timestamp("created_at").notNull(),
 });
 
-export type ProductImage = { unsplashId: string; alt: string; author: string };
+/** Foto do Pexels: o ID é o número no fim da URL da página da foto. */
+export type ProductImage = { pexelsId: string; alt: string; author: string };
 export type ProductColor = { name: string; hex: string };
 export type ProductSize = { label: string; stock: number };
 

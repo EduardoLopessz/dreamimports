@@ -2,12 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    // Fotos reais do Unsplash (licença livre para uso comercial).
-    // O link de download redireciona para images.unsplash.com.
-    remotePatterns: [
-      { protocol: "https", hostname: "unsplash.com", pathname: "/photos/**" },
-      { protocol: "https", hostname: "images.unsplash.com" },
-    ],
+    // Fotos reais do Pexels (licença livre para uso comercial).
+    remotePatterns: [{ protocol: "https", hostname: "images.pexels.com", pathname: "/photos/**" }],
     qualities: [75, 85],
   },
 };

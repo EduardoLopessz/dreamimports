@@ -6,7 +6,7 @@ import { Photo } from "@/components/photo";
 import { ProductCard } from "@/components/product/product-card";
 import { PurchasePanel } from "@/components/product/purchase-panel";
 import { PRODUCTS } from "@/db/data";
-import { discountPercent, formatPrice, installment, pixPrice, unsplash } from "@/lib/utils";
+import { discountPercent, formatPrice, installment, pixPrice, pexels } from "@/lib/utils";
 import { CATEGORY_LABEL, getProduct, relatedProducts, reviewsFor } from "@/server/catalog";
 
 export function generateStaticParams() {
@@ -20,7 +20,7 @@ export async function generateMetadata(props: PageProps<"/produto/[slug]">): Pro
   return {
     title: p.name,
     description: `${p.name}: ${p.description} ${formatPrice(p.priceCents)} ou ${formatPrice(pixPrice(p.priceCents))} no Pix.`,
-    openGraph: { title: p.name, images: [{ url: unsplash(p.images[0].unsplashId), alt: p.images[0].alt }] },
+    openGraph: { title: p.name, images: [{ url: pexels(p.images[0].pexelsId), alt: p.images[0].alt }] },
   };
 }
 
@@ -37,7 +37,7 @@ export default async function ProductPage(props: PageProps<"/produto/[slug]">) {
     "@type": "Product",
     name: product.name,
     description: product.description,
-    image: product.images.map((i) => unsplash(i.unsplashId)),
+    image: product.images.map((i) => pexels(i.pexelsId)),
     brand: { "@type": "Brand", name: "Dream Store" },
     aggregateRating: { "@type": "AggregateRating", ratingValue: product.rating, reviewCount: product.reviewCount },
     offers: { "@type": "Offer", priceCurrency: "BRL", price: (product.priceCents / 100).toFixed(2), availability: "https://schema.org/InStock" },
@@ -61,7 +61,7 @@ export default async function ProductPage(props: PageProps<"/produto/[slug]">) {
         <div className="grid gap-3 sm:grid-cols-2">
           {product.images.map((img, i) => (
             <Photo
-              key={img.unsplashId}
+              key={img.pexelsId}
               image={img}
               priority={i === 0}
               quality={85}

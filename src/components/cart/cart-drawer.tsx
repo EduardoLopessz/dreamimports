@@ -115,7 +115,7 @@ export function CartDrawer() {
                           return (
                             <li key={key} className="flex gap-4 py-5">
                               <Link href={`/produto/${item.slug}`} onClick={() => setOpen(false)} className="shrink-0">
-                                <Photo image={{ unsplashId: item.imageId, alt: item.imageAlt }} sizes="96px" className="size-24" />
+                                <Photo image={{ pexelsId: item.imageId, alt: item.imageAlt }} sizes="96px" className="size-24" />
                               </Link>
                               <div className="flex flex-1 flex-col">
                                 <div className="flex justify-between gap-2">
@@ -168,7 +168,7 @@ export function CartDrawer() {
                                   name: upsell.name,
                                   subtitle: upsell.subtitle,
                                   priceCents: upsell.priceCents,
-                                  imageId: upsell.image.unsplashId,
+                                  imageId: upsell.image.pexelsId,
                                   imageAlt: upsell.image.alt,
                                   size: "M",
                                   color: "Branco",
