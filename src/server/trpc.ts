@@ -26,7 +26,13 @@ export const appRouter = t.router({
 
   /** Prova social: compras recentes (dados de demonstração). */
   recentPurchase: t.procedure.input(z.object({ seed: z.number().int() })).query(({ input }) => {
-    const buyers = ["Ana, de Curitiba", "Rafael, de Salvador", "Júlia, de Porto Alegre", "Caio, de Fortaleza", "Marina, de Campinas"];
+    const buyers = [
+      "Ana, de Curitiba",
+      "Rafael, de Salvador",
+      "Júlia, de Porto Alegre",
+      "Caio, de Fortaleza",
+      "Marina, de Campinas",
+    ];
     const p = PRODUCTS[Math.abs(input.seed) % PRODUCTS.length];
     return {
       buyer: buyers[Math.abs(input.seed) % buyers.length],

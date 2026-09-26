@@ -76,7 +76,7 @@ export function Carousel({
       <ul
         ref={track}
         id={`${id}-track`}
-        className="scrollbar-none mt-6 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth px-4 md:scroll-px-12 md:px-12"
+        className="mt-6 scrollbar-none flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth px-4 md:scroll-px-12 md:px-12"
       >
         {Children.map(children, (child) => (
           <li className={cn("shrink-0 snap-start", itemClassName)}>{child}</li>

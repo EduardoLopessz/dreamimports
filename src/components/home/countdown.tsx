@@ -22,7 +22,7 @@ function parts(ms: number) {
   ];
 }
 
-export function Countdown() {
+export function Countdown({ tone = "light" }: { tone?: "light" | "dark" }) {
   const [remaining, setRemaining] = useState<number | null>(null);
 
   useEffect(() => {
@@ -35,13 +35,20 @@ export function Countdown() {
 
   const items = remaining === null ? null : parts(remaining);
   return (
-    <div role="timer" aria-label="Tempo restante do drop" className="flex items-center justify-center gap-2">
+    <div role="timer" aria-label="Tempo restante do drop" className="flex items-center gap-2">
       {(items ?? parts(0)).map((p) => (
-        <div key={p.label} className="w-16 rounded-xl bg-surface py-2 text-center">
+        <div
+          key={p.label}
+          className={
+            tone === "dark"
+              ? "w-16 rounded-xl bg-white/15 py-2 text-center text-white backdrop-blur-md"
+              : "w-16 rounded-xl bg-surface py-2 text-center"
+          }
+        >
           <span className="block text-2xl font-medium tabular-nums">
             {items ? String(p.value).padStart(2, "0") : "--"}
           </span>
-          <span className="text-xs text-muted">{p.label}</span>
+          <span className={tone === "dark" ? "text-xs text-white/80" : "text-xs text-muted"}>{p.label}</span>
         </div>
       ))}
     </div>

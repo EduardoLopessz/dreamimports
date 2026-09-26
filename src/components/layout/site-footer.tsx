@@ -87,7 +87,13 @@ export function SiteFooter() {
                 { icon: XLogoIcon, label: "X", href: "https://x.com" },
               ].map(({ icon: Icon, label, href }) => (
                 <li key={label}>
-                  <a href={href} target="_blank" rel="noreferrer" aria-label={label} className="text-muted hover:text-ink">
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={label}
+                    className="text-muted hover:text-ink"
+                  >
                     <Icon size={24} />
                   </a>
                 </li>

@@ -20,7 +20,7 @@ export const PRODUCTS: Product[] = [
     priceCents: 28990,
     compareAtCents: null,
     images: [
-      { pexelsId: "1816870", alt: "Homem vestindo moletom preto com capuz", author: "Luis Quintero" },
+      { pexelsId: "1816870", alt: "Homem vestindo moletom preto com capuz", author: "Luis Quintero", focus: "50% 35%" },
     ],
     colors: [
       { name: "Preto", hex: "#111111" },
@@ -32,7 +32,13 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 1284,
     soldLastWeek: 312,
-    details: ["80% algodão, 20% poliéster", "Gramatura 480 g/m²", "Capuz forrado com cordão plano", "Bolso canguru", "Lavar do avesso em água fria"],
+    details: [
+      "80% algodão, 20% poliéster",
+      "Gramatura 480 g/m²",
+      "Capuz forrado com cordão plano",
+      "Bolso canguru",
+      "Lavar do avesso em água fria",
+    ],
   },
   {
     slug: "calca-cargo-orbit",
@@ -44,7 +50,14 @@ export const PRODUCTS: Product[] = [
     gender: "masculino",
     priceCents: 22990,
     compareAtCents: 29990,
-    images: [{ pexelsId: "19392464", alt: "Modelo de jaqueta branca acolchoada e calça cargo preta larga numa viela", author: "Ahmed" }],
+    images: [
+      {
+        pexelsId: "19392464",
+        alt: "Modelo de jaqueta branca acolchoada e calça cargo preta larga numa viela",
+        author: "Ahmed",
+        focus: "50% 62%",
+      },
+    ],
     colors: [
       { name: "Caramelo", hex: "#8a6a45" },
       { name: "Preto", hex: "#111111" },
@@ -66,7 +79,9 @@ export const PRODUCTS: Product[] = [
     gender: "unissex",
     priceCents: 13990,
     compareAtCents: null,
-    images: [{ pexelsId: "4101142", alt: "Homem de camiseta branca encostado na parede", author: "Pexels" }],
+    images: [
+      { pexelsId: "4101142", alt: "Homem de camiseta branca encostado na parede", author: "Pexels", focus: "50% 30%" },
+    ],
     colors: [
       { name: "Branco", hex: "#fafafa" },
       { name: "Preto", hex: "#111111" },
@@ -90,7 +105,14 @@ export const PRODUCTS: Product[] = [
     gender: "unissex",
     priceCents: 34990,
     compareAtCents: null,
-    images: [{ pexelsId: "8497715", alt: "Homem fechando o zíper de uma jaqueta corta-vento", author: "Pexels" }],
+    images: [
+      {
+        pexelsId: "8497715",
+        alt: "Homem fechando o zíper de uma jaqueta corta-vento",
+        author: "Pexels",
+        focus: "50% 35%",
+      },
+    ],
     colors: [
       { name: "Azul e laranja", hex: "#2c4a8a" },
       { name: "Preto", hex: "#111111" },
@@ -113,7 +135,14 @@ export const PRODUCTS: Product[] = [
     gender: "masculino",
     priceCents: 30990,
     compareAtCents: null,
-    images: [{ pexelsId: "10358665", alt: "Homem vestindo moletom preto com zíper e capuz", author: "Pexels" }],
+    images: [
+      {
+        pexelsId: "10358665",
+        alt: "Homem vestindo moletom preto com zíper e capuz",
+        author: "Pexels",
+        focus: "50% 30%",
+      },
+    ],
     colors: [
       { name: "Preto", hex: "#111111" },
       { name: "Mescla", hex: "#9a9a9e" },
@@ -135,7 +164,9 @@ export const PRODUCTS: Product[] = [
     gender: "feminino",
     priceCents: 26990,
     compareAtCents: null,
-    images: [{ pexelsId: "10877553", alt: "Mulher vestindo moletom com capuz", author: "Елена Вотинцева" }],
+    images: [
+      { pexelsId: "10877553", alt: "Mulher vestindo moletom com capuz", author: "Елена Вотинцева", focus: "50% 40%" },
+    ],
     colors: [
       { name: "Preto", hex: "#111111" },
       { name: "Lilás", hex: "#b9a6e8" },
@@ -158,7 +189,12 @@ export const PRODUCTS: Product[] = [
     priceCents: 23990,
     compareAtCents: null,
     images: [
-      { pexelsId: "6503007", alt: "Mulher de camisa branca e calça cargo bege", author: "Dima Valkov" },
+      {
+        pexelsId: "6503007",
+        alt: "Mulher de camisa branca e calça cargo bege",
+        author: "Dima Valkov",
+        focus: "50% 55%",
+      },
     ],
     colors: [
       { name: "Amarelo", hex: "#e2b33c" },
@@ -180,7 +216,9 @@ export const PRODUCTS: Product[] = [
     gender: "feminino",
     priceCents: 25990,
     compareAtCents: null,
-    images: [{ pexelsId: "4049787", alt: "Mulher vestindo moletom com capuz em retrato", author: "Pexels" }],
+    images: [
+      { pexelsId: "4049787", alt: "Mulher vestindo moletom com capuz em retrato", author: "Pexels", focus: "50% 35%" },
+    ],
     colors: [{ name: "Cinza", hex: "#b3b3b3" }],
     sizes: SIZES([4, 8, 5, 2, 1]),
     badge: null,
@@ -193,13 +231,19 @@ export const PRODUCTS: Product[] = [
     slug: "calca-cargo-stone",
     name: "Calça Cargo Stone",
     subtitle: "Calça feminina",
-    description: "Calça cargo de cintura média em sarja leve, com bolsos laterais e barra com elástico. Combina com cropped e moletom.",
+    description:
+      "Calça cargo de cintura média em sarja leve, com bolsos laterais e barra com elástico. Combina com cropped e moletom.",
     category: "calcas",
     gender: "feminino",
     priceCents: 27990,
     compareAtCents: 34990,
     images: [
-      { pexelsId: "13174794", alt: "Mulher de top branco e calça cargo cinza", author: "Ulises Peña" },
+      {
+        pexelsId: "13174794",
+        alt: "Mulher de top branco e calça cargo cinza",
+        author: "Ulises Peña",
+        focus: "50% 60%",
+      },
     ],
     colors: [{ name: "Cinza", hex: "#a7a7ab" }],
     sizes: SIZES([3, 5, 4, 1, 0]),
@@ -218,7 +262,7 @@ export const PRODUCTS: Product[] = [
     gender: "masculino",
     priceCents: 9990,
     compareAtCents: null,
-    images: [{ pexelsId: "1510529", alt: "Homem vestindo camiseta branca", author: "Pexels" }],
+    images: [{ pexelsId: "1510529", alt: "Homem vestindo camiseta branca", author: "Pexels", focus: "50% 30%" }],
     colors: [
       { name: "Branco", hex: "#fafafa" },
       { name: "Preto", hex: "#111111" },
@@ -240,7 +284,9 @@ export const PRODUCTS: Product[] = [
     gender: "masculino",
     priceCents: 10990,
     compareAtCents: 14990,
-    images: [{ pexelsId: "8217304", alt: "Dupla vestindo camisetas brancas lisas", author: "Pexels" }],
+    images: [
+      { pexelsId: "8217304", alt: "Dupla vestindo camisetas brancas lisas", author: "Pexels", focus: "50% 30%" },
+    ],
     colors: [{ name: "Branco", hex: "#fafafa" }],
     sizes: SIZES([2, 6, 5, 3, 1]),
     badge: null,
@@ -253,12 +299,15 @@ export const PRODUCTS: Product[] = [
     slug: "jaqueta-corta-vento-transit",
     name: "Jaqueta Corta-vento Transit",
     subtitle: "Jaqueta masculina",
-    description: "Corta-vento leve em nylon com gola alta, bolsos com zíper e ajuste na barra. Cabe dobrada na mochila.",
+    description:
+      "Corta-vento leve em nylon com gola alta, bolsos com zíper e ajuste na barra. Cabe dobrada na mochila.",
     category: "jaquetas",
     gender: "masculino",
     priceCents: 37990,
     compareAtCents: null,
-    images: [{ pexelsId: "42153", alt: "Homem de jaqueta corta-vento na estação de trem", author: "Pexels" }],
+    images: [
+      { pexelsId: "42153", alt: "Homem de jaqueta corta-vento na estação de trem", author: "Pexels", focus: "50% 35%" },
+    ],
     colors: [{ name: "Grafite", hex: "#3a3a3d" }],
     sizes: SIZES([2, 4, 5, 3, 1]),
     badge: "novo",
@@ -276,7 +325,14 @@ export const PRODUCTS: Product[] = [
     gender: "feminino",
     priceCents: 32990,
     compareAtCents: null,
-    images: [{ pexelsId: "17474393", alt: "Mulher sorrindo de jaqueta puffer preta na rua", author: "Pexels" }],
+    images: [
+      {
+        pexelsId: "17474393",
+        alt: "Mulher sorrindo de jaqueta puffer preta na rua",
+        author: "Pexels",
+        focus: "50% 30%",
+      },
+    ],
     colors: [
       { name: "Preto", hex: "#111111" },
       { name: "Cáqui", hex: "#a39170" },
@@ -326,18 +382,63 @@ export const REVIEWS: Review[] = PRODUCTS.flatMap((p) =>
 
 /** Fotos editoriais da home. */
 export const EDITORIAL = {
-  hero: { pexelsId: "7578780", alt: "Homem de moletom preto sentado em frente a um muro grafitado", author: "Pexels" },
-  colecao: { pexelsId: "25525595", alt: "Dois homens com roupas streetwear em frente a um prédio", author: "Atta-Peters" },
-  feminino: { pexelsId: "13203662", alt: "Mulher sorrindo na rua com calça cargo verde", author: "Pexels" },
-  look: { pexelsId: "19392459", alt: "Modelo de moletom branco e calça cargo preta em uma varanda", author: "Pexels" },
-  drops: { pexelsId: "5424922", alt: "Araras de roupas dentro de uma loja", author: "Pexels" },
-  cupom: { pexelsId: "6496061", alt: "Mulher sorrindo segurando sacolas de compras", author: "Pexels" },
-  frete: { pexelsId: "18339039", alt: "Homem caminhando pela cidade de camiseta cinza", author: "Pexels" },
+  hero: {
+    pexelsId: "19392459",
+    alt: "Modelo de moletom branco com capuz e óculos em frente a uma fachada antiga",
+    author: "Pexels",
+    focus: "50% 32%",
+  },
+  colecao: {
+    pexelsId: "25525595",
+    alt: "Dois homens com roupas streetwear em frente a um prédio",
+    author: "Atta-Peters",
+    focus: "50% 12%",
+  },
+  feminino: {
+    pexelsId: "13203662",
+    alt: "Mulher sorrindo na rua com calça cargo verde",
+    author: "Pexels",
+    focus: "50% 15%",
+  },
+  look: {
+    pexelsId: "19392464",
+    alt: "Modelo de jaqueta branca acolchoada e calça cargo preta larga numa viela",
+    author: "Ahmed",
+    focus: "50% 40%",
+  },
+  drops: { pexelsId: "5424922", alt: "Araras de roupas dentro de uma loja", author: "Pexels", focus: "50% 50%" },
+  cupom: {
+    pexelsId: "6496061",
+    alt: "Mulher sorrindo segurando sacolas de compras",
+    author: "Pexels",
+    focus: "50% 35%",
+  },
+  frete: {
+    pexelsId: "18339039",
+    alt: "Homem caminhando pela cidade de camiseta cinza",
+    author: "Pexels",
+    focus: "50% 55%",
+  },
 } as const;
 
 export const CATEGORY_COVERS = {
-  moletons: { pexelsId: "1928078", alt: "Pessoa de moletom preto e mochila na rua", author: "Pexels" },
-  camisetas: { pexelsId: "17630522", alt: "Homem de camiseta branca na cidade", author: "Tahir Osman" },
-  calcas: { pexelsId: "13424793", alt: "Homem de camisa e calça cargo brancas", author: "El gringo photo" },
-  jaquetas: { pexelsId: "17167935", alt: "Jovem de jaqueta corta-vento com capuz", author: "Pexels" },
+  moletons: {
+    pexelsId: "1928078",
+    alt: "Pessoa de moletom preto e mochila na rua",
+    author: "Pexels",
+    focus: "50% 25%",
+  },
+  camisetas: {
+    pexelsId: "17630522",
+    alt: "Homem de camiseta branca na cidade",
+    author: "Tahir Osman",
+    focus: "50% 30%",
+  },
+  calcas: {
+    pexelsId: "13424793",
+    alt: "Homem de camisa e calça cargo brancas",
+    author: "El gringo photo",
+    focus: "50% 30%",
+  },
+  jaquetas: { pexelsId: "17167935", alt: "Jovem de jaqueta corta-vento com capuz", author: "Pexels", focus: "50% 25%" },
 } as const;

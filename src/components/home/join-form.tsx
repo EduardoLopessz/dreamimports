@@ -20,7 +20,9 @@ export function JoinForm() {
     // Demonstração: a integração com a ferramenta de email entra na próxima etapa.
     setTimeout(() => {
       setStatus("done");
-      toast.success("Cadastro feito. Seu cupom é DREAM10.", { description: "Use na sacola para ganhar 10% de desconto." });
+      toast.success("Cadastro feito. Seu cupom é DREAM10.", {
+        description: "Use na sacola para ganhar 10% de desconto.",
+      });
     }, 700);
   }
 

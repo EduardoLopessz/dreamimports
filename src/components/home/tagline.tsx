@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform, type MotionValue } from "motion/react";
+import { m, useScroll, useTransform, type MotionValue } from "motion/react";
 import { useRef } from "react";
 
 const LINES = ["Feito para a rua.", "Pensado para durar."];
@@ -13,7 +13,7 @@ export function Tagline() {
 
   return (
     <section aria-label="Nossa proposta" className="mx-auto mt-32 max-w-screen-2xl px-4 md:px-12">
-      <p ref={ref} className="display mx-auto max-w-4xl text-center text-6xl sm:text-8xl">
+      <p ref={ref} className="mx-auto max-w-4xl text-center display text-6xl sm:text-8xl">
         {words.map(({ w, br }, i) => (
           <span key={i}>
             {br && <br />}
@@ -27,7 +27,16 @@ export function Tagline() {
   );
 }
 
-function Word({ children, progress, range }: { children: string; progress: MotionValue<number>; range: [number, number] }) {
-  const opacity = useTransform(progress, range, [0.18, 1]);
-  return <motion.span style={{ opacity }}>{children}</motion.span>;
+function Word({
+  children,
+  progress,
+  range,
+}: {
+  children: string;
+  progress: MotionValue<number>;
+  range: [number, number];
+}) {
+  // 0,45 de #111 sobre branco dá contraste > 3:1, o mínimo para texto grande.
+  const opacity = useTransform(progress, range, [0.45, 1]);
+  return <m.span style={{ opacity }}>{children}</m.span>;
 }

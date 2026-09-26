@@ -23,7 +23,10 @@ export function SearchDialog() {
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
-      <Dialog.Trigger aria-label="Buscar produtos" className="flex h-10 items-center gap-2 rounded-full px-2 hover:bg-surface md:bg-surface md:px-3 md:pr-12">
+      <Dialog.Trigger
+        aria-label="Buscar produtos"
+        className="flex h-10 items-center gap-2 rounded-full px-2 hover:bg-surface md:bg-surface md:px-3 md:pr-12"
+      >
         <MagnifyingGlassIcon size={24} />
         <span className="hidden text-base text-muted md:inline">Buscar</span>
       </Dialog.Trigger>
@@ -43,7 +46,10 @@ export function SearchDialog() {
                 className="h-full flex-1 bg-transparent text-base outline-none"
               />
             </label>
-            <Dialog.Close className="grid size-10 place-items-center rounded-full hover:bg-surface" aria-label="Fechar busca">
+            <Dialog.Close
+              className="grid size-10 place-items-center rounded-full hover:bg-surface"
+              aria-label="Fechar busca"
+            >
               <XIcon size={24} />
             </Dialog.Close>
           </div>
@@ -69,7 +75,12 @@ export function SearchDialog() {
                 {data.map((p) => (
                   <li key={p.slug}>
                     <Link href={`/produto/${p.slug}`} onClick={() => setOpen(false)} className="group block">
-                      <Photo image={p.image} sizes="(min-width: 768px) 250px, 45vw" className="aspect-square" imgClassName="transition-transform duration-700 ease-fluid group-hover:scale-105" />
+                      <Photo
+                        image={p.image}
+                        sizes="(min-width: 768px) 250px, 45vw"
+                        className="aspect-square"
+                        imgClassName="transition-transform duration-700 ease-fluid group-hover:scale-105"
+                      />
                       <p className="mt-2 font-medium">{p.name}</p>
                       <p className="text-muted">{p.subtitle}</p>
                       <p className="font-medium">{formatPrice(p.priceCents)}</p>

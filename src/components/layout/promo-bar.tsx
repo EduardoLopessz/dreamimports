@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, m } from "motion/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -22,9 +22,9 @@ export function PromoBar() {
   const msg = MESSAGES[index];
   return (
     <div className="bg-surface" aria-live="polite">
-      <div className="relative mx-auto flex min-h-14 max-w-screen-2xl py-2 items-center justify-center overflow-hidden px-4 text-center">
+      <div className="relative mx-auto flex min-h-14 max-w-screen-2xl items-center justify-center overflow-hidden px-4 py-2 text-center">
         <AnimatePresence mode="wait" initial={false}>
-          <motion.p
+          <m.p
             key={index}
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -37,7 +37,7 @@ export function PromoBar() {
             <Link href={msg.href} className="text-xs underline underline-offset-2">
               {msg.cta}
             </Link>
-          </motion.p>
+          </m.p>
         </AnimatePresence>
       </div>
     </div>

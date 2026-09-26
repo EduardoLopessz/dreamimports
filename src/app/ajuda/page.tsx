@@ -57,7 +57,11 @@ export default function HelpPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: SECTIONS.slice(0, 7).map((s) => ({ "@type": "Question", name: s.q, acceptedAnswer: { "@type": "Answer", text: s.a } })),
+    mainEntity: SECTIONS.slice(0, 7).map((s) => ({
+      "@type": "Question",
+      name: s.q,
+      acceptedAnswer: { "@type": "Answer", text: s.a },
+    })),
   };
   return (
     <div className="mx-auto max-w-3xl px-4 pt-10">

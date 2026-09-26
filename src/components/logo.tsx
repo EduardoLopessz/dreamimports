@@ -15,7 +15,7 @@ export function Logo({ className }: { className?: string }) {
     <Link href="/" aria-label="Dream Store, página inicial" className={cn("flex items-center gap-2", className)}>
       <LogoMark className="size-6 sm:size-7" />
       <span className="display text-2xl leading-none sm:text-3xl">
-        Dream<span className="ml-1.5 text-accent">Store</span>
+        Dream <span className="text-accent">Store</span>
       </span>
     </Link>
   );

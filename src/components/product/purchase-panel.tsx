@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, m } from "motion/react";
 import { useState } from "react";
 import { Label, Radio, RadioGroup } from "react-aria-components";
 import { CheckIcon, EyeIcon, TruckIcon } from "@/components/icons";
@@ -9,6 +9,7 @@ import type { ProductColor, ProductImage, ProductSize } from "@/db/schema";
 import { cn } from "@/lib/utils";
 import { useCart } from "@/store/cart";
 import { FavoriteButton } from "./favorite-button";
+import { SizeGuide } from "./size-guide";
 
 type Props = {
   product: {
@@ -30,7 +31,7 @@ export function PurchasePanel({ product }: Props) {
   const [added, setAdded] = useState(false);
   const selected = product.sizes.find((s) => s.label === size);
   // Número estável por produto, só para a prova social de demonstração.
-  const viewers = 9 + (product.slug.length * 7) % 23;
+  const viewers = 9 + ((product.slug.length * 7) % 23);
 
   function addToBag() {
     if (!size) {
@@ -82,17 +83,20 @@ export function PurchasePanel({ product }: Props) {
       >
         <div className="flex items-center justify-between">
           <Label className={cn("font-medium", error && "text-sale")}>Selecione o tamanho</Label>
-          <a href="/ajuda#tamanhos" className="text-sm text-muted underline underline-offset-2 hover:text-ink">
-            Guia de tamanhos
-          </a>
+          <SizeGuide />
         </div>
-        <div className={cn("grid grid-cols-5 gap-2 rounded-lg", error && "outline outline-1 outline-offset-4 outline-sale")}>
+        <div
+          className={cn(
+            "grid grid-cols-5 gap-2 rounded-lg",
+            error && "outline outline-1 outline-offset-4 outline-sale",
+          )}
+        >
           {product.sizes.map((s) => (
             <Radio
               key={s.label}
               value={s.label}
               isDisabled={s.stock === 0}
-              className="grid h-12 cursor-pointer place-items-center rounded-lg border border-line text-base font-medium outline-none transition-colors hover:border-ink data-[disabled]:cursor-not-allowed data-[disabled]:bg-surface data-[disabled]:text-muted/50 data-[disabled]:line-through data-[focus-visible]:ring-2 data-[focus-visible]:ring-accent data-[selected]:border-ink data-[selected]:ring-1 data-[selected]:ring-ink"
+              className="grid h-12 cursor-pointer place-items-center rounded-lg border border-line text-base font-medium transition-colors outline-none hover:border-ink data-[disabled]:cursor-not-allowed data-[disabled]:bg-surface data-[disabled]:text-muted/50 data-[disabled]:line-through data-[focus-visible]:ring-2 data-[focus-visible]:ring-accent data-[selected]:border-ink data-[selected]:ring-1 data-[selected]:ring-ink"
             >
               {s.label}
             </Radio>
@@ -113,7 +117,7 @@ export function PurchasePanel({ product }: Props) {
       <div className="flex gap-2">
         <Button size="lg" className="relative flex-1 overflow-hidden" onClick={addToBag}>
           <AnimatePresence mode="wait" initial={false}>
-            <motion.span
+            <m.span
               key={added ? "ok" : "add"}
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -128,7 +132,7 @@ export function PurchasePanel({ product }: Props) {
               ) : (
                 "Adicionar à sacola"
               )}
-            </motion.span>
+            </m.span>
           </AnimatePresence>
         </Button>
         <FavoriteButton slug={product.slug} name={product.name} className="size-14 border border-line" />

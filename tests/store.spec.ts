@@ -10,7 +10,10 @@ test("home mostra capa, mais vendidos e vantagens de membro", async ({ page }) =
 
 test("busca encontra produtos pela API", async ({ page }) => {
   await page.goto("/");
-  await page.getByRole("button", { name: /buscar/i }).first().click();
+  await page
+    .getByRole("button", { name: /buscar/i })
+    .first()
+    .click();
   await page.getByPlaceholder(/buscar moletom/i).fill("cargo");
   await expect(page.getByRole("link", { name: /calça cargo orbit/i })).toBeVisible();
 });
@@ -34,7 +37,7 @@ test("produto exige tamanho, adiciona à sacola e aplica cupom", async ({ page }
 
   await bag.getByPlaceholder("Cupom de desconto").fill("dream10");
   await bag.getByRole("button", { name: "Aplicar" }).click();
-  await expect(bag.getByText("Cupom DREAM10")).toBeVisible();
+  await expect(bag.getByText("Cupom DREAM10", { exact: true })).toBeVisible();
 });
 
 test("cadastro de membro valida email", async ({ page }) => {

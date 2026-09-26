@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import type { ReactNode } from "react";
 
 /** Entrada suave ao aparecer na tela (IntersectionObserver via whileInView, uma vez só). */
@@ -17,9 +17,8 @@ export function Reveal({
   variant?: "text" | "image";
   className?: string;
 }) {
-  const Comp = as === "section" ? motion.section : motion.div;
-  const initial =
-    variant === "image" ? { opacity: 0, scale: 1.03 } : { opacity: 0, y: 32, filter: "blur(8px)" };
+  const Comp = as === "section" ? m.section : m.div;
+  const initial = variant === "image" ? { opacity: 0, scale: 1.03 } : { opacity: 0, y: 32, filter: "blur(8px)" };
   const animate = variant === "image" ? { opacity: 1, scale: 1 } : { opacity: 1, y: 0, filter: "blur(0px)" };
   return (
     <Comp

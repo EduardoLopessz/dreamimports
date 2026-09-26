@@ -15,9 +15,16 @@ export type CartItem = {
   quantity: number;
 };
 
+/** Cupons válidos (demonstração). */
+export const COUPONS: Record<string, number> = { DREAM10: 0.1 };
+
 type CartState = {
   items: CartItem[];
   open: boolean;
+  coupon: string | null;
+  /** Normaliza e aplica; devolve o código aplicado ou null se não existir. */
+  applyCoupon: (code: string) => string | null;
+  removeCoupon: () => void;
   setOpen: (open: boolean) => void;
   add: (item: Omit<CartItem, "quantity">, quantity?: number) => void;
   setQuantity: (key: string, quantity: number) => void;
@@ -34,6 +41,14 @@ export const useCart = create<CartState>()(
     (set) => ({
       items: [],
       open: false,
+      coupon: null,
+      applyCoupon: (code) => {
+        const c = code.trim().toUpperCase();
+        if (!(c in COUPONS)) return null;
+        set({ coupon: c });
+        return c;
+      },
+      removeCoupon: () => set({ coupon: null }),
       setOpen: (open) => set({ open }),
       add: (item, quantity = 1) =>
         set((s) => {
@@ -52,12 +67,12 @@ export const useCart = create<CartState>()(
               : s.items.map((i) => (itemKey(i) === key ? { ...i, quantity: Math.min(quantity, 10) } : i)),
         })),
       remove: (key) => set((s) => ({ items: s.items.filter((i) => itemKey(i) !== key) })),
-      clear: () => set({ items: [] }),
+      clear: () => set({ items: [], coupon: null }),
     }),
     {
       name: "dream-cart-v2",
       storage: createJSONStorage(() => localStorage),
-      partialize: (s) => ({ items: s.items }),
+      partialize: (s) => ({ items: s.items, coupon: s.coupon }),
       skipHydration: true,
     },
   ),
@@ -65,6 +80,7 @@ export const useCart = create<CartState>()(
 
 export const cartCount = (s: CartState) => s.items.reduce((n, i) => n + i.quantity, 0);
 export const cartSubtotal = (s: CartState) => s.items.reduce((n, i) => n + i.priceCents * i.quantity, 0);
+export const cartDiscount = (s: CartState) => (s.coupon ? Math.round(cartSubtotal(s) * (COUPONS[s.coupon] ?? 0)) : 0);
 
 type FavState = { slugs: string[]; toggle: (slug: string) => void };
 

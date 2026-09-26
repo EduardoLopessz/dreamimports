@@ -36,7 +36,11 @@ export function LookBanner() {
     <section id="look" aria-labelledby="look-title" className="mx-auto mt-24 max-w-screen-2xl scroll-mt-20 md:px-12">
       <h2 className="px-4 text-2xl font-medium md:px-0">Look Nebula</h2>
       <Reveal variant="image" className="mt-6">
-        <Photo image={EDITORIAL.look} sizes="(min-width: 1536px) 1440px, 100vw" className="aspect-[4/5] sm:aspect-[16/8]" imgClassName="object-[center_25%]" />
+        <Photo
+          image={EDITORIAL.look}
+          sizes="(min-width: 1536px) 1440px, 100vw"
+          className="aspect-[4/5] sm:aspect-[16/8]"
+        />
       </Reveal>
       <div className="px-4 pt-10 text-center">
         <Reveal>

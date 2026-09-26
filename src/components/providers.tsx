@@ -1,6 +1,6 @@
 "use client";
 
-import { MotionConfig } from "motion/react";
+import { domAnimation, LazyMotion, MotionConfig } from "motion/react";
 import { useEffect, type ReactNode } from "react";
 import { Toaster } from "sonner";
 import { ApiProvider } from "@/lib/trpc";
@@ -15,10 +15,12 @@ export function Providers({ children }: { children: ReactNode }) {
 
   return (
     <ApiProvider>
-      <MotionConfig reducedMotion="user" transition={{ ease: [0.32, 0.72, 0, 1], duration: 0.6 }}>
-        {children}
-        <Toaster position="bottom-center" toastOptions={{ className: "font-sans" }} />
-      </MotionConfig>
+      <LazyMotion features={domAnimation} strict>
+        <MotionConfig reducedMotion="user" transition={{ ease: [0.32, 0.72, 0, 1], duration: 0.6 }}>
+          {children}
+          <Toaster position="bottom-center" toastOptions={{ className: "font-sans" }} />
+        </MotionConfig>
+      </LazyMotion>
     </ApiProvider>
   );
 }

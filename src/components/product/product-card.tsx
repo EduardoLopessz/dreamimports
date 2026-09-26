@@ -12,7 +12,8 @@ const BADGE: Record<NonNullable<Product["badge"]>, { label: string; className: s
 
 export function ProductCard({ product, sizes, priority }: { product: Product; sizes: string; priority?: boolean }) {
   const off = discountPercent(product.priceCents, product.compareAtCents ?? undefined);
-  const badge = off > 0 ? { label: `${off}% off`, className: "text-sale" } : product.badge ? BADGE[product.badge] : null;
+  const badge =
+    off > 0 ? { label: `${off}% off`, className: "text-sale" } : product.badge ? BADGE[product.badge] : null;
   return (
     <article className="group relative">
       <Link href={`/produto/${product.slug}`} className="block">

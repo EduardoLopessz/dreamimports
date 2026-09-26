@@ -1,7 +1,7 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, m } from "motion/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { XIcon } from "@/components/icons";
@@ -38,7 +38,7 @@ export function SocialProof() {
   return (
     <AnimatePresence>
       {visible && data && !dismissed && (
-        <motion.div
+        <m.div
           role="status"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -57,7 +57,7 @@ export function SocialProof() {
           >
             <XIcon size={16} />
           </button>
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   );

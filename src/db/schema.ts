@@ -39,8 +39,11 @@ export const reviews = pgTable("reviews", {
   createdAt: timestamp("created_at").notNull(),
 });
 
-/** Foto do Pexels: o ID é o número no fim da URL da página da foto. */
-export type ProductImage = { pexelsId: string; alt: string; author: string };
+/**
+ * Foto do Pexels: o ID é o número no fim da URL da página da foto.
+ * `focus` é o object-position (ponto que não pode ser cortado, normalmente o rosto).
+ */
+export type ProductImage = { pexelsId: string; alt: string; author: string; focus?: string };
 export type ProductColor = { name: string; hex: string };
 export type ProductSize = { label: string; stock: number };
 

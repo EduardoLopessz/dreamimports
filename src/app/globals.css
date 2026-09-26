@@ -18,19 +18,35 @@
 
   --animate-rise: rise 0.9s var(--ease-fluid) both;
   @keyframes rise {
-    from { opacity: 0; transform: translateY(24px); filter: blur(6px); }
-    to { opacity: 1; transform: none; filter: none; }
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+      filter: blur(6px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+      filter: none;
+    }
   }
   --animate-settle: settle 1.6s var(--ease-fluid) both;
   @keyframes settle {
-    from { transform: scale(1.05); }
-    to { transform: none; }
+    from {
+      transform: scale(1.05);
+    }
+    to {
+      transform: none;
+    }
   }
 
   --animate-marquee: marquee var(--marquee-duration, 28s) linear infinite;
   @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(calc(-50% - var(--marquee-gap, 3rem) / 2)); }
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-50% - var(--marquee-gap, 3rem) / 2));
+    }
   }
 }
 
@@ -43,7 +59,9 @@
     color: var(--color-ink);
     font-family: var(--font-sans);
   }
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     text-wrap: balance;
   }
   p {
@@ -70,7 +88,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

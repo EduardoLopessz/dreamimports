@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { StarIcon } from "@/components/icons";
-import { Photo } from "@/components/photo";
 import { ProductCard } from "@/components/product/product-card";
 import { PurchasePanel } from "@/components/product/purchase-panel";
+import { ZoomPhoto } from "@/components/product/zoom-photo";
 import { PRODUCTS } from "@/db/data";
 import { discountPercent, formatPrice, installment, pixPrice, pexels } from "@/lib/utils";
 import { CATEGORY_LABEL, getProduct, relatedProducts, reviewsFor } from "@/server/catalog";
@@ -40,7 +40,12 @@ export default async function ProductPage(props: PageProps<"/produto/[slug]">) {
     image: product.images.map((i) => pexels(i.pexelsId)),
     brand: { "@type": "Brand", name: "Dream Store" },
     aggregateRating: { "@type": "AggregateRating", ratingValue: product.rating, reviewCount: product.reviewCount },
-    offers: { "@type": "Offer", priceCurrency: "BRL", price: (product.priceCents / 100).toFixed(2), availability: "https://schema.org/InStock" },
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "BRL",
+      price: (product.priceCents / 100).toFixed(2),
+      availability: "https://schema.org/InStock",
+    },
   };
 
   return (
@@ -60,12 +65,10 @@ export default async function ProductPage(props: PageProps<"/produto/[slug]">) {
       <div className="mt-6 grid gap-10 lg:grid-cols-[minmax(0,1fr)_420px] lg:gap-16">
         <div className="grid gap-3 sm:grid-cols-2">
           {product.images.map((img, i) => (
-            <Photo
+            <ZoomPhoto
               key={img.pexelsId}
               image={img}
               priority={i === 0}
-              quality={85}
-              sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"
               className={product.images.length === 1 ? "aspect-[4/5] sm:col-span-2" : "aspect-[4/5]"}
             />
           ))}
@@ -84,13 +87,17 @@ export default async function ProductPage(props: PageProps<"/produto/[slug]">) {
           <a href="#avaliacoes" className="mt-2 flex items-center gap-1 text-sm">
             <StarIcon weight="fill" size={16} aria-hidden />
             <span className="font-medium">{product.rating.toLocaleString("pt-BR")}</span>
-            <span className="text-muted underline underline-offset-2">({product.reviewCount.toLocaleString("pt-BR")} avaliações)</span>
+            <span className="text-muted underline underline-offset-2">
+              ({product.reviewCount.toLocaleString("pt-BR")} avaliações)
+            </span>
           </a>
 
           <p className="mt-6 text-xl font-medium">
             {formatPrice(product.priceCents)}
             {product.compareAtCents && (
-              <span className="ml-2 text-base font-normal text-muted line-through">{formatPrice(product.compareAtCents)}</span>
+              <span className="ml-2 text-base font-normal text-muted line-through">
+                {formatPrice(product.compareAtCents)}
+              </span>
             )}
           </p>
           <p className="text-sm">
@@ -123,7 +130,8 @@ export default async function ProductPage(props: PageProps<"/produto/[slug]">) {
           <details className="border-t border-line py-4">
             <summary className="cursor-pointer list-none text-lg font-medium">Entrega e trocas</summary>
             <p className="mt-3 text-muted">
-              Frete grátis acima de R$ 299. A primeira troca é grátis em até 30 dias após o recebimento, direto pelo site.
+              Frete grátis acima de R$ 299. A primeira troca é grátis em até 30 dias após o recebimento, direto pelo
+              site.
             </p>
           </details>
         </div>
@@ -141,7 +149,7 @@ export default async function ProductPage(props: PageProps<"/produto/[slug]">) {
         <ul className="mt-6 grid gap-3 md:grid-cols-3">
           {reviews.map((r) => (
             <li key={r.id} className="rounded-2xl border border-line p-6">
-              <p className="flex gap-0.5" aria-label={`${r.rating} de 5 estrelas`}>
+              <p className="flex gap-0.5" role="img" aria-label={`${r.rating} de 5 estrelas`}>
                 {Array.from({ length: 5 }, (_, i) => (
                   <StarIcon key={i} size={16} weight={i < r.rating ? "fill" : "regular"} aria-hidden />
                 ))}

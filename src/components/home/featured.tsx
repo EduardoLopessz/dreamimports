@@ -5,8 +5,20 @@ import { buttonVariants } from "@/components/ui/button";
 import { Reveal } from "./reveal";
 
 const ITEMS = [
-  { image: EDITORIAL.colecao, eyebrow: "Coleção Nebula", title: "Streetwear feito para durar", cta: "Comprar coleção", href: "/c/lancamentos" },
-  { image: EDITORIAL.feminino, eyebrow: "Feminino", title: "Oversized do seu jeito", cta: "Comprar feminino", href: "/c/feminino" },
+  {
+    image: EDITORIAL.colecao,
+    eyebrow: "Coleção Nebula",
+    title: "Streetwear feito para durar",
+    cta: "Comprar coleção",
+    href: "/c/lancamentos",
+  },
+  {
+    image: EDITORIAL.feminino,
+    eyebrow: "Feminino",
+    title: "Oversized do seu jeito",
+    cta: "Comprar feminino",
+    href: "/c/feminino",
+  },
 ];
 
 export function Featured() {

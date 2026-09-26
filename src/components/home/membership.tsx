@@ -11,7 +11,11 @@ const PERKS = [
 
 export function Membership() {
   return (
-    <section id="membros" aria-labelledby="membros-title" className="mx-auto mt-24 max-w-screen-2xl scroll-mt-20 px-4 md:px-12">
+    <section
+      id="membros"
+      aria-labelledby="membros-title"
+      className="mx-auto mt-24 max-w-screen-2xl scroll-mt-20 px-4 md:px-12"
+    >
       <h2 id="membros-title" className="text-2xl font-medium">
         Vantagens de membro
       </h2>

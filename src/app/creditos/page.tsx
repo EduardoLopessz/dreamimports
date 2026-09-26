@@ -4,11 +4,7 @@ import { CATEGORY_COVERS, EDITORIAL, PRODUCTS } from "@/db/data";
 export const metadata: Metadata = { title: "Créditos das fotos", robots: { index: false } };
 
 export default function CreditsPage() {
-  const all = [
-    ...Object.values(EDITORIAL),
-    ...Object.values(CATEGORY_COVERS),
-    ...PRODUCTS.flatMap((p) => p.images),
-  ];
+  const all = [...Object.values(EDITORIAL), ...Object.values(CATEGORY_COVERS), ...PRODUCTS.flatMap((p) => p.images)];
   const unique = [...new Map(all.map((i) => [i.pexelsId, i])).values()];
   return (
     <div className="mx-auto max-w-3xl px-4 pt-10">
