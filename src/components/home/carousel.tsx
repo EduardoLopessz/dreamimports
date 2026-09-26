@@ -22,10 +22,17 @@ export function Carousel({
   const track = useRef<HTMLUListElement>(null);
   const [edges, setEdges] = useState({ start: true, end: false });
 
+  const frame = useRef(0);
   const update = useCallback(() => {
-    const el = track.current;
-    if (!el) return;
-    setEdges({ start: el.scrollLeft < 8, end: el.scrollLeft + el.clientWidth > el.scrollWidth - 8 });
+    cancelAnimationFrame(frame.current);
+    frame.current = requestAnimationFrame(() => {
+      const el = track.current;
+      if (!el) return;
+      const start = el.scrollLeft < 8;
+      const end = el.scrollLeft + el.clientWidth > el.scrollWidth - 8;
+      // mesmo valor = mesmo objeto: o React não renderiza de novo durante o scroll
+      setEdges((prev) => (prev.start === start && prev.end === end ? prev : { start, end }));
+    });
   }, []);
 
   useEffect(() => {
@@ -34,6 +41,7 @@ export function Carousel({
     el?.addEventListener("scroll", update, { passive: true });
     window.addEventListener("resize", update);
     return () => {
+      cancelAnimationFrame(frame.current);
       el?.removeEventListener("scroll", update);
       window.removeEventListener("resize", update);
     };

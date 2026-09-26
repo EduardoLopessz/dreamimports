@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 /** Fim do drop: próximo domingo às 23h59 (horário de Brasília). */
 function nextDropEnd(now: Date) {
@@ -22,18 +22,51 @@ function parts(ms: number) {
   ];
 }
 
-export function Countdown({ tone = "light" }: { tone?: "light" | "dark" }) {
-  const [remaining, setRemaining] = useState<number | null>(null);
-
-  useEffect(() => {
-    const end = nextDropEnd(new Date());
-    const tick = () => setRemaining(end - Date.now());
+/**
+ * Relógio compartilhado: um único intervalo para todas as contagens da página,
+ * que para quando a aba fica em segundo plano e quando nenhuma contagem está montada.
+ */
+const clock = (() => {
+  const listeners = new Set<() => void>();
+  let now = 0;
+  let id: ReturnType<typeof setInterval> | undefined;
+  const tick = () => {
+    now = Math.floor(Date.now() / 1000) * 1000;
+    listeners.forEach((l) => l());
+  };
+  const start = () => {
+    if (id !== undefined || document.hidden) return;
     tick();
-    const id = setInterval(tick, 1000);
-    return () => clearInterval(id);
-  }, []);
+    id = setInterval(tick, 1000);
+  };
+  const stop = () => {
+    clearInterval(id);
+    id = undefined;
+  };
+  const onVisibility = () => (document.hidden ? stop() : start());
+  return {
+    subscribe(listener: () => void) {
+      listeners.add(listener);
+      if (listeners.size === 1) {
+        document.addEventListener("visibilitychange", onVisibility);
+        start();
+      }
+      return () => {
+        listeners.delete(listener);
+        if (listeners.size === 0) {
+          stop();
+          document.removeEventListener("visibilitychange", onVisibility);
+        }
+      };
+    },
+    get: () => now,
+  };
+})();
 
-  const items = remaining === null ? null : parts(remaining);
+export function Countdown({ tone = "light" }: { tone?: "light" | "dark" }) {
+  // No servidor (e antes de hidratar) mostra "--"; depois, o relógio compartilhado.
+  const now = useSyncExternalStore(clock.subscribe, clock.get, () => 0);
+  const items = now === 0 ? null : parts(nextDropEnd(new Date(now)) - now);
   return (
     <div role="timer" aria-label="Tempo restante do drop" className="flex items-center gap-2">
       {(items ?? parts(0)).map((p) => (
@@ -41,7 +74,7 @@ export function Countdown({ tone = "light" }: { tone?: "light" | "dark" }) {
           key={p.label}
           className={
             tone === "dark"
-              ? "w-16 rounded-xl bg-white/15 py-2 text-center text-white backdrop-blur-md"
+              ? "w-16 rounded-xl bg-black/35 py-2 text-center text-white"
               : "w-16 rounded-xl bg-surface py-2 text-center"
           }
         >

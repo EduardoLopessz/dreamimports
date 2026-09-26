@@ -29,7 +29,11 @@ export function discountPercent(price: number, compareAt?: number) {
   return Math.round((1 - price / compareAt) * 100);
 }
 
-/** Foto original no CDN do Pexels; o next/image redimensiona para cada tela. */
+/**
+ * Foto já reduzida pelo CDN do Pexels (1920px, comprimida). O original tem até 6000px e vários MB;
+ * partir desta versão deixa a primeira otimização do next/image muito mais rápida.
+ */
+export const PEXELS_SEARCH = "?auto=compress&cs=tinysrgb&w=1920";
 export function pexels(id: string) {
-  return `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg`;
+  return `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg${PEXELS_SEARCH}`;
 }

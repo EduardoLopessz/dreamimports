@@ -22,7 +22,7 @@ export function MobileMenu({ links }: { links: { href: string; label: string }[]
           <Dialog.Portal forceMount>
             <Dialog.Overlay asChild forceMount>
               <m.div
-                className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm"
+                className="fixed inset-0 z-50 bg-black/50"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
