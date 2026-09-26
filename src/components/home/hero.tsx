@@ -12,7 +12,7 @@ export function Hero() {
           quality={85}
           sizes="(min-width: 1536px) 1440px, 100vw"
           className="aspect-[4/5] sm:aspect-[16/9] lg:aspect-[21/10]"
-          imgClassName="object-[center_30%] animate-settle"
+          imgClassName="object-[center_45%] animate-settle"
         />
       <div className="px-4 pt-10 text-center">
         <div className="animate-rise [animation-delay:100ms]">

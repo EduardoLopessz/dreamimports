@@ -21,7 +21,6 @@ export const PRODUCTS: Product[] = [
     compareAtCents: null,
     images: [
       { pexelsId: "1816870", alt: "Homem vestindo moletom preto com capuz", author: "Luis Quintero" },
-      { pexelsId: "34582212", alt: "Homem ajustando o capuz do moletom na rua", author: "Wolrider YURTSEVEN" },
     ],
     colors: [
       { name: "Preto", hex: "#111111" },
@@ -45,7 +44,7 @@ export const PRODUCTS: Product[] = [
     gender: "masculino",
     priceCents: 22990,
     compareAtCents: 29990,
-    images: [{ pexelsId: "19461558", alt: "Modelo de moletom azul-marinho e calça cargo preta", author: "addy bronzzz" }],
+    images: [{ pexelsId: "19392464", alt: "Modelo de jaqueta branca acolchoada e calça cargo preta larga numa viela", author: "Ahmed" }],
     colors: [
       { name: "Caramelo", hex: "#8a6a45" },
       { name: "Preto", hex: "#111111" },
@@ -67,7 +66,7 @@ export const PRODUCTS: Product[] = [
     gender: "unissex",
     priceCents: 13990,
     compareAtCents: null,
-    images: [{ pexelsId: "9363417", alt: "Homem de barba vestindo camiseta branca de gola careca", author: "Pexels" }],
+    images: [{ pexelsId: "4101142", alt: "Homem de camiseta branca encostado na parede", author: "Pexels" }],
     colors: [
       { name: "Branco", hex: "#fafafa" },
       { name: "Preto", hex: "#111111" },
@@ -241,7 +240,7 @@ export const PRODUCTS: Product[] = [
     gender: "masculino",
     priceCents: 10990,
     compareAtCents: 14990,
-    images: [{ pexelsId: "2770596", alt: "Homem sorrindo de camiseta branca", author: "Pexels" }],
+    images: [{ pexelsId: "8217304", alt: "Dupla vestindo camisetas brancas lisas", author: "Pexels" }],
     colors: [{ name: "Branco", hex: "#fafafa" }],
     sizes: SIZES([2, 6, 5, 3, 1]),
     badge: null,
@@ -327,17 +326,17 @@ export const REVIEWS: Review[] = PRODUCTS.flatMap((p) =>
 
 /** Fotos editoriais da home. */
 export const EDITORIAL = {
-  hero: { pexelsId: "1928078", alt: "Pessoa de moletom preto parada na rua", author: "Pexels" },
+  hero: { pexelsId: "7578780", alt: "Homem de moletom preto sentado em frente a um muro grafitado", author: "Pexels" },
   colecao: { pexelsId: "25525595", alt: "Dois homens com roupas streetwear em frente a um prédio", author: "Atta-Peters" },
   feminino: { pexelsId: "13203662", alt: "Mulher sorrindo na rua com calça cargo verde", author: "Pexels" },
   look: { pexelsId: "19392459", alt: "Modelo de moletom branco e calça cargo preta em uma varanda", author: "Pexels" },
   drops: { pexelsId: "5424922", alt: "Araras de roupas dentro de uma loja", author: "Pexels" },
   cupom: { pexelsId: "6496061", alt: "Mulher sorrindo segurando sacolas de compras", author: "Pexels" },
-  frete: { pexelsId: "12725400", alt: "Entregador entregando um pacote na porta", author: "Pexels" },
+  frete: { pexelsId: "18339039", alt: "Homem caminhando pela cidade de camiseta cinza", author: "Pexels" },
 } as const;
 
 export const CATEGORY_COVERS = {
-  moletons: { pexelsId: "7578780", alt: "Homem de moletom preto olhando para o lado", author: "Pexels" },
+  moletons: { pexelsId: "1928078", alt: "Pessoa de moletom preto e mochila na rua", author: "Pexels" },
   camisetas: { pexelsId: "17630522", alt: "Homem de camiseta branca na cidade", author: "Tahir Osman" },
   calcas: { pexelsId: "13424793", alt: "Homem de camisa e calça cargo brancas", author: "El gringo photo" },
   jaquetas: { pexelsId: "17167935", alt: "Jovem de jaqueta corta-vento com capuz", author: "Pexels" },
