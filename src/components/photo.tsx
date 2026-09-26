@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { BLUR } from "@/db/blur";
 import type { ProductImage } from "@/db/schema";
 import { cn, pexels } from "@/lib/utils";
 
@@ -7,13 +8,17 @@ type Props = {
   sizes: string;
   className?: string;
   imgClassName?: string;
+  /** Foto principal da tela (LCP): começa a baixar já no <head>. */
   priority?: boolean;
-  quality?: 75 | 85;
   imgStyle?: React.CSSProperties;
 };
 
-/** Foto real do Pexels, preenchendo o container. O fundo cinza aparece enquanto carrega. */
-export function Photo({ image, sizes, className, imgClassName, priority, quality = 75, imgStyle }: Props) {
+/**
+ * Foto real do Pexels, preenchendo o container. Enquanto a foto baixa, aparece uma
+ * miniatura desfocada dela mesma (menos de 1 KB, já no HTML), então nunca fica um buraco cinza.
+ */
+export function Photo({ image, sizes, className, imgClassName, priority, imgStyle }: Props) {
+  const blur = BLUR[image.pexelsId];
   return (
     <div className={cn("relative overflow-hidden bg-surface", className)}>
       <Image
@@ -21,8 +26,9 @@ export function Photo({ image, sizes, className, imgClassName, priority, quality
         alt={image.alt}
         fill
         sizes={sizes}
-        priority={priority}
-        quality={quality}
+        preload={priority}
+        placeholder={blur ? "blur" : "empty"}
+        blurDataURL={blur}
         className={cn("object-cover text-transparent", imgClassName)}
         style={{ objectPosition: image.focus ?? "50% 30%", ...imgStyle }}
       />

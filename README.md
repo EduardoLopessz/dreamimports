@@ -67,7 +67,7 @@ tests/            testes Playwright
 
 ## Fotos
 
-Todas as fotos são do Pexels (Licença Pexels, uso comercial livre), servidas pelo CDN `images.pexels.com` e otimizadas pelo `next/image`. A lista com os autores fica em `/creditos`. Para trocar uma foto, copie o número do fim da URL da foto no Pexels (por exemplo `pexels.com/photo/nome-da-foto-1816870/`) para o campo `pexelsId` em `src/db/data.ts`.
+Todas as fotos são do Pexels (Licença Pexels, uso comercial livre). O `next/image` pede cada tamanho direto ao CDN do Pexels (`src/lib/image-loader.ts`), que entrega AVIF ou WebP conforme o navegador. Enquanto a foto baixa, aparece uma miniatura desfocada dela (`src/db/blur.ts`). A lista com os autores fica em `/creditos`. Para trocar uma foto, copie o número do fim da URL da foto no Pexels (por exemplo `pexels.com/photo/nome-da-foto-1816870/`) para o campo `pexelsId` em `src/db/data.ts`; para a miniatura, gere um JPEG de 12px em `https://images.pexels.com/photos/ID/pexels-photo-ID.jpeg?auto=compress&cs=tinysrgb&w=12` e adicione em base64 no `blur.ts`.
 
 ## O que é demonstração
 

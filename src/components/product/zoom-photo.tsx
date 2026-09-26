@@ -32,7 +32,6 @@ export function ZoomPhoto({
       <Photo
         image={image}
         priority={priority}
-        quality={85}
         sizes="(min-width: 1024px) 55vw, 100vw"
         className="absolute inset-0"
         imgClassName={cn("transition-transform ease-fluid", origin ? "scale-[1.8] duration-200" : "duration-500")}

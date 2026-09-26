@@ -20,8 +20,9 @@ export function Reveal({
   const Comp = as === "section" ? m.section : m.div;
   // Só transform e opacity: rodam na GPU sem repintar. Nada de filter: blur em blocos grandes,
   // que é caro de desenhar a cada quadro, principalmente no celular.
-  const initial = variant === "image" ? { opacity: 0, scale: 1.02 } : { opacity: 0, y: 20 };
-  const animate = variant === "image" ? { opacity: 1, scale: 1 } : { opacity: 1, y: 0 };
+  // Foto não começa invisível: a miniatura desfocada já aparece e a foto só assenta no lugar.
+  const initial = variant === "image" ? { scale: 1.04 } : { opacity: 0, y: 20 };
+  const animate = variant === "image" ? { scale: 1 } : { opacity: 1, y: 0 };
   return (
     <Comp
       className={className}

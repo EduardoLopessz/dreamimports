@@ -14,7 +14,6 @@ export function Hero() {
         <Photo
           image={EDITORIAL.hero}
           priority
-          quality={85}
           sizes="(min-width: 1536px) 1440px, 100vw"
           className="absolute inset-0"
           imgClassName="animate-settle"

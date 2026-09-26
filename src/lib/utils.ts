@@ -30,10 +30,10 @@ export function discountPercent(price: number, compareAt?: number) {
 }
 
 /**
- * Foto já reduzida pelo CDN do Pexels (1920px, comprimida). O original tem até 6000px e vários MB;
- * partir desta versão deixa a primeira otimização do next/image muito mais rápida.
+ * Foto no CDN do Pexels, que redimensiona pelo `w` e entrega AVIF/WebP conforme o navegador.
+ * O next/image troca o `w` para cada tamanho do srcset (ver src/lib/image-loader.ts);
+ * 1920px é o padrão para quem usa a URL direto (Open Graph, dados estruturados).
  */
-export const PEXELS_SEARCH = "?auto=compress&cs=tinysrgb&w=1920";
-export function pexels(id: string) {
-  return `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg${PEXELS_SEARCH}`;
+export function pexels(id: string, width = 1920) {
+  return `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${width}`;
 }

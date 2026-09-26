@@ -2,6 +2,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import { preconnect } from "react-dom";
 import { DeferredOverlays } from "@/components/deferred-overlays";
 import { PromoBar } from "@/components/layout/promo-bar";
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -31,6 +32,8 @@ export const metadata: Metadata = {
 export const viewport: Viewport = { themeColor: "#ffffff" };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
+  // Todas as fotos vêm do CDN do Pexels: abre a conexão antes de o navegador achar a primeira <img>.
+  preconnect("https://images.pexels.com");
   return (
     <html lang="pt-BR" className={`${anton.variable} ${geist.variable} antialiased`}>
       <body className="flex min-h-dvh flex-col">
